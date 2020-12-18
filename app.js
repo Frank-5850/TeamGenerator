@@ -153,12 +153,16 @@ function assembleTeam() {
             console.log(err);
           });
       } else {
-        console.log(team);
+        output();
       }
     } catch (err) {
       console.log(err);
     }
   }
+}
+
+function output() {
+  fs.writeFileSync(outputPath, render(team), "utf-8");
 }
 
 assembleTeam();
