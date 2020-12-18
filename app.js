@@ -106,6 +106,47 @@ function assembleTeam() {
               answers.school
             );
             team.push(intern);
+            newTeamMate();
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      } else if (teamMate.teamType === "Engineer") {
+        inquirer
+          .prompt([
+            {
+              type: "input",
+              name: "name",
+              message: "What is the Engineer name?",
+            },
+
+            {
+              type: "input",
+              name: "id",
+              message: "What is the Engineer id?",
+            },
+
+            {
+              type: "input",
+              name: "email",
+              message: "What is the Engineer email?",
+            },
+
+            {
+              type: "input",
+              name: "github",
+              message: "What is the Engineer GitHub username?",
+            },
+          ])
+
+          .then(function (answers) {
+            let engineer = new Engineer(
+              answers.name,
+              answers.id,
+              answers.email,
+              answers.github
+            );
+            team.push(engineer);
             console.log(team);
             newTeamMate();
           })
