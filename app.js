@@ -147,12 +147,13 @@ function assembleTeam() {
               answers.github
             );
             team.push(engineer);
-            console.log(team);
             newTeamMate();
           })
           .catch(function (err) {
             console.log(err);
           });
+      } else {
+        console.log(team);
       }
     } catch (err) {
       console.log(err);
