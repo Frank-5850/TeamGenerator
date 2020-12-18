@@ -17,26 +17,26 @@ function assembleTeam() {
     .prompt([
       {
         type: "input",
-        message: "What is the managers name?",
         name: "name",
+        message: "What is the managers name?",
       },
 
       {
         type: "input",
-        message: "What is the managers id?",
         name: "id",
+        message: "What is the managers id?",
       },
 
       {
         type: "input",
-        message: "What is the managers email?",
         name: "email",
+        message: "What is the managers email?",
       },
 
       {
         type: "input",
-        message: "What is the managers office number?",
         name: "officeNumber",
+        message: "What is the managers office number?",
       },
     ])
 
@@ -49,11 +49,31 @@ function assembleTeam() {
       );
       team.push(manager);
       console.log(team);
+      newTeamMate();
     })
 
     .catch(function (err) {
       console.log(err);
     });
+
+  async function newTeamMate() {
+    try {
+      let teamMate = await inquirer.prompt([
+        {
+          type: "list",
+          name: "teamType",
+          message: "What type of teammate would you like to add",
+          choices: [
+            "Engineer",
+            "Intern",
+            "I don/t want to add anymore teammates.",
+          ],
+        },
+      ]);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
 
 assembleTeam();
