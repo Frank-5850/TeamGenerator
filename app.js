@@ -48,7 +48,6 @@ function assembleTeam() {
         answers.officeNumber
       );
       team.push(manager);
-      console.log(team);
       newTeamMate();
     })
 
@@ -70,6 +69,50 @@ function assembleTeam() {
           ],
         },
       ]);
+
+      if (teamMate.teamType === "Intern") {
+        inquirer
+          .prompt([
+            {
+              type: "input",
+              name: "name",
+              message: "What is the intern name?",
+            },
+
+            {
+              type: "input",
+              name: "id",
+              message: "What is the intern id?",
+            },
+
+            {
+              type: "input",
+              name: "email",
+              message: "What is the intern email?",
+            },
+
+            {
+              type: "input",
+              name: "school",
+              message: "What is the intern school?",
+            },
+          ])
+
+          .then(function (answers) {
+            let intern = new Intern(
+              answers.name,
+              answers.id,
+              answers.email,
+              answers.school
+            );
+            team.push(intern);
+            console.log(team);
+            newTeamMate();
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      }
     } catch (err) {
       console.log(err);
     }
